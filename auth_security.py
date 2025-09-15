@@ -21,4 +21,4 @@ def verify_magic_token(token: str, max_age=900) -> str | None:
 def generate_totp_secret() -> str:
     return base64.b32encode(os.urandom(10)).decode()
 
-def get_totp_uri()
+def get_totp_uri(secret: str, email: str, issuer="MyApp") -> str:
