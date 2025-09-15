@@ -39,3 +39,8 @@ async def verify_mfa(email: str = Form(...), code: str = Form(...)):
     if verify_totp(secret, code):
         return {"message": "2FA success"}
     raise HTTPException(status_code=401, detail="Invalid code")
+
+@app.post("/secure/store")
+async def secure_store(data: str = Form(...)):
+    encrypted = encrypt(data)
+    return {"encrypted": encrypted}
