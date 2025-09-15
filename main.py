@@ -10,3 +10,4 @@ def create_a_magic_token(email:str) -> str:
     return signer.sign(user)
 
 def verify_magic_token(token: str, max_age=900) -> str | None:
+    try:
