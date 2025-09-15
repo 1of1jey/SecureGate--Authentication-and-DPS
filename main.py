@@ -44,3 +44,11 @@ async def verify_mfa(email: str = Form(...), code: str = Form(...)):
 async def secure_store(data: str = Form(...)):
     encrypted = encrypt(data)
     return {"encrypted": encrypted}
+
+@app.post("/secure/retrieve")
+async def secure_retrieve(cipher: str = Form(...)):
+    try:
+        plain = decrypt(cipher)
+        return {"decrypted": plain}
+    except Exception:
+        raise HTTPException(status_code=400, detail="Decryption failed")
