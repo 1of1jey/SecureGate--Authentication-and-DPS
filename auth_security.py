@@ -16,6 +16,7 @@ def verify_magic_token(token: str, max_age=900) -> str | None:
         return email
     except (BadSignature, SignatureExpired):
         return None
-:
+
 #TOTP's
 def generate_totp_secret() -> str:
+    return
