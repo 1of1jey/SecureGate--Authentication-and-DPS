@@ -15,3 +15,4 @@ def verify_magic_token(token: str, max_age=900) -> str | None:
         email, _ =raw.split(":", 1)
         return email
     except (BadSignature, SignatureExpired):
+        return
