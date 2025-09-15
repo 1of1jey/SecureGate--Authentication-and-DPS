@@ -22,3 +22,4 @@ def generate_totp_secret() -> str:
     return base64.b32encode(os.urandom(10)).decode()
 
 def get_totp_uri(secret: str, email: str, issuer="MyApp") -> str:
+    return
