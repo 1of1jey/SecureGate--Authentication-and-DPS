@@ -24,3 +24,4 @@ def generate_totp_secret() -> str:
 def get_totp_uri(secret: str, email: str, issuer="MyApp") -> str:
     return pyotp.TOTP(secret).provisioning_uri(name=email, issuer_name=issuer)
 
+def
