@@ -17,7 +17,7 @@ async def verify_login(token: str):
     email = verify_magic_token(token)
     if not email:
         raise HTTPException(status_code=401, detail="Invalid or expired token")
-    # Create account if first login
+    # Create the account if it's the first login
     if email not in users:
         users[email] = {"totp_secret": None}
     return {"message": "Logged in successfully", "email": email}
