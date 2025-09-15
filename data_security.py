@@ -17,3 +17,12 @@ def decrypt(ciphertext_b64: str) -> str:
     nonce, ct = data[:12], data[12:]
     aes = AESGCM(_get_key())
     return aes.decrypt(nonce, ct, None).decode()
+
+
+def mask_email(email: str) -> str:
+    try:
+        user, domain = email.split("@")
+    except ValueError:
+        return email
+    masked = user[0] + "*"*(len(user)-2) + user[-1]
+    return f"{masked}@{domain}"
