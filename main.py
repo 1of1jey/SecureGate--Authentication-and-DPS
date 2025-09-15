@@ -12,3 +12,5 @@ async def request_login(email: str = form(...)):
     token = create_a_magic_token()
     return {"message": "Magic link generated", "link": f"http://localhost:8000/login/verify?token={token}"}
 
+app.pos
+
