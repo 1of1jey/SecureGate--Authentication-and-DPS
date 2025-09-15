@@ -19,4 +19,4 @@ def verify_magic_token(token: str, max_age=900) -> str | None:
 
 #TOTP's
 def generate_totp_secret() -> str:
-    return base64
+    return base64.b32encode(secrets.token_bytes(10)).decode()
