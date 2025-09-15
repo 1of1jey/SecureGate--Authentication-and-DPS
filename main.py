@@ -8,3 +8,5 @@ signer = TimestampSigner(os.environ.get("MAGIC_KEY", "supersecret"))
 def create_a_magic_token(email:str) -> str:
     user = f"{email}:{secrets.token_urlsafe(32)}"
     return signer.sign(user)
+
+def verify_magic_token(token: str, max_age=900) -> str | None:
