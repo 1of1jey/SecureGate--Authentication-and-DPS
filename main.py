@@ -9,7 +9,7 @@ users = {}
 
 app.post("/login/request")
 async def request_login(email: str = form(...)):
-    token = create_a_magic_token()
+    token = create_a_magic_token(email)
     return {"message": "Magic link generated", "link": f"http://localhost:8000/login/verify?token={token}"}
 
 app.get("/login/verify")
