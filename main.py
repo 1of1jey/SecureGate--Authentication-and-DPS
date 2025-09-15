@@ -11,4 +11,5 @@ def create_a_magic_token(email:str) -> str:
 
 def verify_magic_token(token: str, max_age=900) -> str | None:
     try:
-        raw_info =
+        raw_info = signer.unsign(token, max_age=max_age)
+        email
