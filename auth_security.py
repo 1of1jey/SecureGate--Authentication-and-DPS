@@ -20,3 +20,5 @@ def verify_magic_token(token: str, max_age=900) -> str | None:
 #TOTP's
 def generate_totp_secret() -> str:
     return base64.b32encode(os.urandom(10)).decode()
+
+def get
