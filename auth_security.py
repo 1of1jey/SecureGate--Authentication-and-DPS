@@ -1,5 +1,5 @@
 import os, secrets, base64
-import pytop
+import pyotp
 from itsdangerous import TimestampSigner, BadSignature, SignatureExpired
 
 signer = TimestampSigner(os.environ.get("MAGIC_KEY", "supersecret"))
