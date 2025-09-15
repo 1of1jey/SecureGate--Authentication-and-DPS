@@ -30,3 +30,12 @@ async def setup_mfa(email: str = Form(...)):
     users[email]["totp_secret"] = secret
     uri = get_totp_uri(secret, email)
     return {"secret": secret, "provisioning_uri": uri}
+
+@app.post("/mfa/verify")
+async def verify_mfa(email: str = Form(...), code: str = Form(...)):
+    secret = users.get(email, {}).get("totp_secret")
+    if not secret:
+        raise HTTPException(status_code=400, detail="No TOTP set up")
+    if verify_totp(secret, code):
+        return {"message": "2FA success"}
+    raise HTTPException(status_code=401, detail="Invalid code")
