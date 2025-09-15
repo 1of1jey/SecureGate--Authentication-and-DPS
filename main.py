@@ -22,3 +22,11 @@ async def verify_login(token: str):
         users[email] = {"totp_secret": None}
     return {"message": "Logged in successfully", "email": email}
 
+@app.post("/mfa/setup")
+async def setup_mfa(email: str = Form(...)):
+    if email not in users:
+        raise HTTPException(status_code=404, detail="User not found")
+    secret = generate_totp_secret()
+    users[email]["totp_secret"] = secret
+    uri = get_totp_uri(secret, email)
+    return {"secret": secret, "provisioning_uri": uri}
