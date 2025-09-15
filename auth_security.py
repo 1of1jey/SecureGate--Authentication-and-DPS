@@ -18,3 +18,4 @@ def verify_magic_token(token: str, max_age=900) -> str | None:
         return None
 
 #TOTP's
+def generate_totp_secret
