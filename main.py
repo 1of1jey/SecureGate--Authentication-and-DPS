@@ -3,3 +3,6 @@ import pytop
 from itsdangerous import TimestampSigner, BadSignature, SignatureExpired
 
 signer = TimestampSigner(os.environ.get("MAGIC_KEY", "supersecret"))
+
+#MAGIC LINKS TO BE USED
+def create_a_magic_token(em)
