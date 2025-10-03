@@ -54,6 +54,6 @@ async def secure_retrieve(cipher: str = Form(...)):
         raise HTTPException(status_code=400, detail="Decryption failed")
 
 
-@app.get("/mask")
+@app.get("/")
 async def mask(email: str):
     return {"masked": mask_email(email)}
